@@ -46,3 +46,22 @@ const navLinks = document.querySelectorAll('nav a');
 for (let i = 0; i < navLinks.length; i++) {
   navLinks[i].textContent = siteContent.nav[`nav-item-${i+1}`] 
 }
+
+let h1 = document.querySelector("h1")
+h1.textContent = siteContent.cta.h1;
+
+let button = document.querySelector('button')
+button.textContent = siteContent.cta.button;
+
+let cta = document.getElementById("cta-img");
+cta.setAttribute('src', siteContent.cta["img-src"])
+
+const mainH4s = document.querySelectorAll('.text-content h4');
+let sectionNames = ['features', 'about', 'services', 'product', 'vision']
+
+for (let i = 0; i < mainH4s.length; i++) {
+  mainH4s[i].textContent = siteContent['main-content'][`${sectionNames[i]}-h4`] 
+}
+
+let middleImg = document.getElementById("middle-img");
+middleImg.setAttribute('src', siteContent['main-content']["middle-img-src"])
