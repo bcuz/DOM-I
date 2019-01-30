@@ -45,6 +45,7 @@ const navLinks = document.querySelectorAll('nav a');
 
 for (let i = 0; i < navLinks.length; i++) {
   navLinks[i].textContent = siteContent.nav[`nav-item-${i+1}`] 
+  navLinks[i].style.color = "green"
 }
 
 let h1 = document.querySelector("h1")
@@ -56,12 +57,38 @@ button.textContent = siteContent.cta.button;
 let cta = document.getElementById("cta-img");
 cta.setAttribute('src', siteContent.cta["img-src"])
 
-const mainH4s = document.querySelectorAll('.text-content h4');
-let sectionNames = ['features', 'about', 'services', 'product', 'vision']
-
-for (let i = 0; i < mainH4s.length; i++) {
-  mainH4s[i].textContent = siteContent['main-content'][`${sectionNames[i]}-h4`] 
+// dry
+function mainContent(tag, jsonPropName) {
+  let sectionNames = ['features', 'about', 'services', 'product', 'vision']
+  let elements = document.querySelectorAll(`.text-content ${tag}`);
+  
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].textContent = siteContent['main-content'][`${sectionNames[i]}-${jsonPropName}`] 
+  }
 }
+
+mainContent("h4", 'h4')
+mainContent("p", 'content')
 
 let middleImg = document.getElementById("middle-img");
 middleImg.setAttribute('src', siteContent['main-content']["middle-img-src"])
+
+document.querySelector('.contact h4').textContent = siteContent.contact["contact-h4"]
+
+let contactPs = document.querySelectorAll('.contact p');
+
+for (let i = 0; i < contactPs.length; i++) {
+  let contactSections = ['address', 'phone', 'email']
+  contactPs[i].textContent = siteContent.contact[`${contactSections[i]}`] 
+}
+
+let node = document.createElement("a");               
+node.href = '#'
+let textnode = document.createTextNode("Water");       
+node.appendChild(textnode);                            
+document.querySelector("nav").appendChild(node);   
+let node2 = document.createElement("a");               
+node2.href = '#'
+let textnode2 = document.createTextNode("Bob");       
+node2.appendChild(textnode2);                    
+document.querySelector("nav").prepend(node2);   
