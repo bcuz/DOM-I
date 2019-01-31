@@ -41,11 +41,9 @@ const siteContent = {
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
 
-const navLinks = document.querySelectorAll('nav a');
-
-for (let i = 0; i < navLinks.length; i++) {
-  navLinks[i].textContent = siteContent.nav[`nav-item-${i+1}`] 
-}
+// chain
+document.querySelectorAll('nav a')
+.forEach((link, i) =>  link.textContent = siteContent.nav[`nav-item-${i+1}`] )
 
 let h1 = document.querySelector("h1")
 h1.textContent = siteContent.cta.h1;
@@ -59,11 +57,8 @@ cta.setAttribute('src', siteContent.cta["img-src"])
 // dry
 function mainContent(tag, jsonPropName) {
   let sectionNames = ['features', 'about', 'services', 'product', 'vision']
-  let elements = document.querySelectorAll(`.text-content ${tag}`);
-  
-  for (let i = 0; i < elements.length; i++) {
-    elements[i].textContent = siteContent['main-content'][`${sectionNames[i]}-${jsonPropName}`] 
-  }
+  document.querySelectorAll(`.text-content ${tag}`)
+  .forEach((element, i) => element.textContent = siteContent['main-content'][`${sectionNames[i]}-${jsonPropName}`])
 }
 
 mainContent("h4", 'h4')
@@ -92,7 +87,7 @@ let textnode = document.createTextNode("append");
 node.appendChild(textnode);                            
 document.querySelector("nav").appendChild(node);   
 
-let navLinks2 = document.querySelectorAll('nav a')
+document.querySelectorAll('nav a')
 .forEach(link=> link.style.color = "green" )
 
 let footer = document.querySelector('footer p');
