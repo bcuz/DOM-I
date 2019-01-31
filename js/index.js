@@ -45,7 +45,6 @@ const navLinks = document.querySelectorAll('nav a');
 
 for (let i = 0; i < navLinks.length; i++) {
   navLinks[i].textContent = siteContent.nav[`nav-item-${i+1}`] 
-  navLinks[i].style.color = "green"
 }
 
 let h1 = document.querySelector("h1")
@@ -71,7 +70,7 @@ mainContent("h4", 'h4')
 mainContent("p", 'content')
 
 let middleImg = document.getElementById("middle-img");
-middleImg.setAttribute('src', siteContent['main-content']["middle-img-src"])
+middleImg.src = siteContent['main-content']["middle-img-src"]
 
 document.querySelector('.contact h4').textContent = siteContent.contact["contact-h4"]
 
@@ -82,13 +81,19 @@ for (let i = 0; i < contactPs.length; i++) {
   contactPs[i].textContent = siteContent.contact[`${contactSections[i]}`] 
 }
 
-let node = document.createElement("a");               
-node.href = '#'
-let textnode = document.createTextNode("Water");       
-node.appendChild(textnode);                            
-document.querySelector("nav").appendChild(node);   
 let node2 = document.createElement("a");               
 node2.href = '#'
-let textnode2 = document.createTextNode("Bob");       
+let textnode2 = document.createTextNode("prepend");       
 node2.appendChild(textnode2);                    
 document.querySelector("nav").prepend(node2);   
+let node = document.createElement("a");               
+node.href = '#'
+let textnode = document.createTextNode("append");       
+node.appendChild(textnode);                            
+document.querySelector("nav").appendChild(node);   
+
+let navLinks2 = document.querySelectorAll('nav a')
+.forEach(link=> link.style.color = "green" )
+
+let footer = document.querySelector('footer p');
+footer.textContent = siteContent.footer.copyright
