@@ -67,6 +67,10 @@ mainContent("p", 'content')
 let middleImg = document.getElementById("middle-img");
 middleImg.src = siteContent['main-content']["middle-img-src"]
 
+middleImg.addEventListener('click', function() {
+  middleImg.src = 'https://via.placeholder.com/876x182'
+})
+
 document.querySelector('.contact h4').textContent = siteContent.contact["contact-h4"]
 
 let contactPs = document.querySelectorAll('.contact p');
@@ -92,3 +96,4 @@ document.querySelectorAll('nav a')
 
 let footer = document.querySelector('footer p');
 footer.textContent = siteContent.footer.copyright
+
