@@ -46,7 +46,11 @@ document.querySelectorAll('nav a')
 .forEach((link, i) =>  link.textContent = siteContent.nav[`nav-item-${i+1}`] )
 
 let h1 = document.querySelector("h1")
-h1.textContent = siteContent.cta.h1;
+
+let splitted = siteContent.cta.h1.split(" ")
+
+let newStr = `${splitted[0]} <br> ${splitted[1]} <br> ${splitted[2]}`
+h1.innerHTML = newStr;
 
 let button = document.querySelector('button')
 button.textContent = siteContent.cta.button;
