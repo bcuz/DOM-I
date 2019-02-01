@@ -40,3 +40,64 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+// chain
+document.querySelectorAll('nav a')
+.forEach((link, i) =>  link.textContent = siteContent.nav[`nav-item-${i+1}`] )
+
+let h1 = document.querySelector("h1")
+
+let splitted = siteContent.cta.h1.split(" ")
+
+let newStr = `${splitted[0]} <br> ${splitted[1]} <br> ${splitted[2]}`
+h1.innerHTML = newStr;
+
+let button = document.querySelector('button')
+button.textContent = siteContent.cta.button;
+
+let cta = document.getElementById("cta-img");
+cta.setAttribute('src', siteContent.cta["img-src"])
+
+// dry
+function mainContent(tag, jsonPropName) {
+  let sectionNames = ['features', 'about', 'services', 'product', 'vision']
+  document.querySelectorAll(`.text-content ${tag}`)
+  .forEach((element, i) => element.textContent = siteContent['main-content'][`${sectionNames[i]}-${jsonPropName}`])
+}
+
+mainContent("h4", 'h4')
+mainContent("p", 'content')
+
+let middleImg = document.getElementById("middle-img");
+middleImg.src = siteContent['main-content']["middle-img-src"]
+
+middleImg.addEventListener('click', function() {
+  middleImg.src = 'https://via.placeholder.com/876x182'
+})
+
+document.querySelector('.contact h4').textContent = siteContent.contact["contact-h4"]
+
+let contactPs = document.querySelectorAll('.contact p');
+
+for (let i = 0; i < contactPs.length; i++) {
+  let contactSections = ['address', 'phone', 'email']
+  contactPs[i].textContent = siteContent.contact[`${contactSections[i]}`] 
+}
+
+let node2 = document.createElement("a");               
+node2.href = '#'
+let textnode2 = document.createTextNode("prepend");       
+node2.appendChild(textnode2);                    
+document.querySelector("nav").prepend(node2);   
+let node = document.createElement("a");               
+node.href = '#'
+let textnode = document.createTextNode("append");       
+node.appendChild(textnode);                            
+document.querySelector("nav").appendChild(node);   
+
+document.querySelectorAll('nav a')
+.forEach(link=> link.style.color = "green" )
+
+let footer = document.querySelector('footer p');
+footer.textContent = siteContent.footer.copyright
+
